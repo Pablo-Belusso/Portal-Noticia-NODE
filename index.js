@@ -14,7 +14,7 @@ app.use( bodyParser.urlencoded({    // suporta URL codificada
 app.engine('html',require('ejs').renderFile); // renderiza a engine pra html utilizando ejs
 app.set('view engine','html'); // seta a view engine para html
 app.use('/public', express.static(path.join(__dirname, 'public'))); // O diretório estático será na pasta "public"
-app.set('views', path.join(__dirname,'/views')); // aponta para a pasta "views"
+app.set('views', path.join(__dirname,'/pages')); // aponta para a pasta "views"
 
 
 // ROTAS  ---------------------------------------------------
@@ -23,7 +23,7 @@ app.get('/',(req,res) => {       // PÁGINA HOME
     console.log(req.query);
 
     if(req.query.busca == null){   // valida se está tendo busca:
-        res.send('home');
+        res.render('home',{});
     }else{
         res.send('Você buscou: '+req.query.busca);
     }
