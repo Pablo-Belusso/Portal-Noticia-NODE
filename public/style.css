@@ -53,6 +53,7 @@ header {
     border-radius: 10px;
 }
 
+/* PLACEHOLDER DO INPUT --------------------------------*/
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: white;
@@ -66,4 +67,23 @@ header {
   
   ::-ms-input-placeholder { /* Microsoft Edge */
     color: white;
+  }
+
+  /* PLACEHOLDER DO INPUT --------------------------------*/
+
+
+  section.noticia-destaque{
+    padding: 40px 0;
+  }
+
+  section.noticia-destaque >.center{
+    max-width: 960px;
+  }
+  .img-destaque{
+    width: 100%;
+    position: relative;
+  }
+
+  .img-destaque img{
+    width: 100%;
   }
