@@ -77,7 +77,8 @@ header {
   }
 
   section.noticia-destaque >.center{
-    max-width: 960px;
+    max-width: 900px;
+    max-height: 500px;
   }
 
   .img-destaque{
@@ -108,4 +109,29 @@ header {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 20px;
+  }
+
+  section.outras-noticias{
+    background-color: #eaeaea;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  section.outras-noticias h2{
+    font-size: 54px;
+  }
+
+  .ultimas{
+    width: 70%;
+    padding: 0 30px;
+    background-color: #008bb4;
+  }
+
+  .mais-lidas{
+    width: 30%;
+  }
+
+  .mais-lidas > h3{
+    background-color: #3f51b5;
+    color: white;
   }
