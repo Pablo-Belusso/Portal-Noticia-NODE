@@ -11,7 +11,7 @@ header {
 }
 
 .center {
-    max-width: 1100px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 2%;
     display: flex;
@@ -96,9 +96,19 @@ header {
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 10px;
+    padding: 40px;
     max-width: 600px;
     color: white;
+  }
+
+  .title-destaque-descricao h2{
+    font-size: 64px;
+    margin: 20px 0;
+  }
+
+  .title-destaque-descricao p{
+    font-weight: lighter;
+    font-size: 18px;
   }
 
   .overlay-destaque{
@@ -117,15 +127,53 @@ header {
     text-align: center;
   }
 
-  section.outras-noticias h2{
+  section.outras-noticias h2{ /* Especifíca pra toda a SECTION */
     font-size: 54px;
   }
 
   .ultimas{
     width: 70%;
-    padding: 0 30px;
-    background-color: #008bb4;
+    padding: 0 10px;
+    display: flex;
   }
+
+  .box-ultima-single{
+    text-align: left;
+    width: 48%;
+    margin-right: 2%;
+    background-color: white;
+    padding-bottom: 20px;
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  .box-ultima-single img{
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px; 
+  }
+
+.box-ultima-single h3{
+  font-size: 16px;
+  color: #33439b;
+  margin: 20px 0;
+}
+
+.box-ultima-single h2{
+  color: #303336;
+  font-size: 28px !important; /* "!important" é um racker do CSS que está sobrepondo uma 
+                                  específicação da "section.outras-noticias h2" */
+}
+
+.box-ultima-single p{
+  color: #7b8591;
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+.conteudo-noticia-single{
+  padding: 20px;
+}
 
   .mais-lidas{
     width: 30%;
@@ -134,4 +182,9 @@ header {
   .mais-lidas > h3{
     background-color: #3f51b5;
     color: white;
+    text-align: center;
+    padding: 10px 8px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
+
