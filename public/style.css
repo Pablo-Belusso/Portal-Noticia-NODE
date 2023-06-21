@@ -15,6 +15,7 @@ header {
     margin: 0 auto;
     padding: 0 2%;
     display: flex;
+    flex-wrap: nowrap;
 }
 
 .logo{
@@ -171,6 +172,21 @@ header {
   margin: 20px 0;
 }
 
+
+.box-ultima-single a{
+  display: block;
+  width: 180px;
+  height: 55px;
+  border: 1px solid #ebebeb;
+  text-decoration: none;
+  color: #0aacdc;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 19px;
+}
+
+
 .conteudo-noticia-single{
   padding: 20px;
 }
@@ -178,6 +194,12 @@ header {
   .mais-lidas{
     width: 30%;
   }
+
+  
+  .mais-lidas-noticias{
+    background-color: white;
+  }
+
 
   .mais-lidas > h3{
     background-color: #3f51b5;
@@ -188,3 +210,45 @@ header {
     border-top-right-radius: 10px;
   }
 
+
+  .mais-lidas-noticias-single {
+    text-align: left;
+    padding: 20px;
+    display: flex;
+    
+  }
+
+  .mais-lidas-noticias-single img{
+    width: 45%;
+    
+  }
+
+  .mais-lidas-noticias-single .texto-mais-lido-single {
+    width: 70%;
+    padding: 8px 20px;
+  }
+
+  .mais-lidas-noticias-single h4{
+    color: #40be65;
+    letter-spacing: 3px;
+  }
+
+  .mais-lidas-noticias-single p{
+    margin-top: 3px;
+    color: #7b8591;
+    font-size: 15px;
+  }
+
+  .texto-mais-lido-single a{
+    margin-top: 10px;
+    display: block;
+    width: 120px;
+    height: 35px;
+    border: 1px solid #ebebeb;
+    text-decoration: none;
+    color: #0aacdc;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+  }
