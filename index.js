@@ -25,16 +25,18 @@ app.get('/',(req,res) => {       // PÁGINA HOME
     if(req.query.busca == null){   // valida se está tendo busca:
         res.render('home',{});
     }else{
-        res.send('Você buscou: '+req.query.busca);
+        // res.send('Você buscou: '+req.query.busca);
+        res.render('home',{});
     }
      
 
 });
 
 
-app.get('/:slug',(req,res) => {   // PÁGINA INDIVIDUAL DA NOTÍCIA
+app.get('/:slug',(req,res) => {   // SLUG = é o valor que está depois da barra da URL da página
     
-    res.send(req.params.slug); 
+    //res.send(req.params.slug); 
+    res.render('single',{});
 
 });
 

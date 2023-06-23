@@ -261,6 +261,8 @@ header {
     font-size: 14px;
   }
 
+  /* --------------------  RODAPÉ -------------------------------------------------------------------------------   */
+
   footer{
     height: 70px;
     background-color: #0aacdc;
@@ -269,6 +271,22 @@ header {
     color: white;
     padding: 10px 0;
   }
+
+   /* --------------------  PAGINA SINGLE.html ----------------------------------------------------------   */
+
+   section.noticia{
+    padding: 20px 0;
+    background-color: #eaeaea;
+   }
+
+   .noticia-single{
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    width: 60%;
+   }
+
+  /* --------------------  RESPONSIVO -------------------------------------------------------------------------------   */
 
   @media screen and (max-width:768px) {
    
