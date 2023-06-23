@@ -261,6 +261,15 @@ header {
     font-size: 14px;
   }
 
+  footer{
+    height: 70px;
+    background-color: #0aacdc;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    padding: 10px 0;
+  }
+
   @media screen and (max-width:768px) {
    
     .center {
