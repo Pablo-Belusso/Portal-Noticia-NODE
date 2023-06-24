@@ -19,14 +19,14 @@ app.set('views', path.join(__dirname,'/pages')); // aponta para a pasta "views"
 
 // ROTAS  ---------------------------------------------------
 
-app.get('/',(req,res) => {       // PÁGINA HOME
+app.get('/',(req,res) => {       // PÁGINA HOME  -- 
     console.log(req.query);
 
-    if(req.query.busca == null){   // valida se está tendo busca:
+    if(req.query.busca == null){   // Validação de Rotas
         res.render('home',{});
     }else{
         // res.send('Você buscou: '+req.query.busca);
-        res.render('home',{});
+        res.render('busca',{});
     }
      
 
