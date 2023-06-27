@@ -7,16 +7,11 @@
                         <a href="/encarar-o-surf"> <div class="overlay-destaque"></div> </a>
 
                         <div class="title-destaque-descricao">
-                            <a href="/encarar-o-surf"> <h2>Quer fugir das praias de verão?</h2> </a>
-                            <a href="/encarar-o-surf"> 
-                                <p>Mesmo para decisões de última hora, ainda há tempo 
-                                para dar uma escapada e 
-                                aproveitar a praia, sol e natureza no mês de dezembro, antes das festas de 
-                                final de ano, pagando mais barato e curtindo praias incríveis. </p> 
-                            </a>
+                            <a href="<%= posts[0].slug %>"> <h2><%= posts[0].titulo %></h2> </a> 
+                                <p><%- posts[0].descricaoCurta %>... </p>  <!-- "-" faz com que ele leia as tags HTML do campo "conteudo" --> 
                         </div>
 
-                        <img src="/public/images/landscape.jpg" />
+                        <img src="<%= posts[0].imagem %>" />
 
                     </div> <!-- img-destaque -->
                 </div> <!-- center -->
@@ -29,107 +24,36 @@
                     <div class="center">
                         <div class="ultimas">
 
-                            <div class="box-ultima-single">
-                                <img src="/public/images/surf2.jpg"/>
+                            <% for(let i = 1; i < posts.length; i++) { %>
+                                <div class="box-ultima-single">
+                                    <img src="<%= posts[i].imagem %>"/>
 
-                                <div class="conteudo-noticia-single">
-                                    <h3>Dica de Aventura</h3>
-                                    <h2>Como encarar as ondas do Havaí</h2>
-                                    <p>O surf no Havaí não é para qualquer um! Dropar ondas perfeitas pode ter um preço alto 
-                                        se você não souber onde está se metendo. As ondas e a correnteza são bastante fortes, 
-                                        e o mar é cheio de pedras e corais no fundo. As chances de se machucar ou ser jogado 
-                                        para alto-mar são grandes. </p>
-                                    <a href="/encarar-o-surf">Saiba Mais</a>
+                                    <div class="conteudo-noticia-single">
+                                        <h3><%= posts[i].categoria %></h3>
+                                        <h2><%= posts[i].titulo %></h2>
+                                        <p><%- posts[i].descricaoCurta %>... </p>
+                                        <a href="<%= posts[i].slug %>">Saiba Mais</a>
+                                    </div>
                                 </div>
+                            <% } %>
 
-                            </div>
-
-                            <div class="box-ultima-single">
-                                <img src="/public/images/landscape.jpg"/>
-
-                                <div class="conteudo-noticia-single">
-                                    <h3>Natureza e Geral</h3>
-                                    <h2>Como encarar as ondas do Havaí</h2>
-                                    <p>O surf no Havaí não é para qualquer um! Dropar ondas perfeitas pode ter um preço alto 
-                                        se você não souber onde está se metendo. As ondas e a correnteza são bastante fortes, 
-                                        e o mar é cheio de pedras e corais no fundo. As chances de se machucar ou ser jogado 
-                                        para alto-mar são grandes. 
-                                        Tome cuidado e se informe ou peça dicas a outros surfistas antes de cair na água.</p>
-                                        <a href="/encarar-o-surf">Saiba Mais</a>
-                                </div>
-                            </div>
-
-                            <div class="box-ultima-single">
-                                <img src="/public/images/surf.jpg"/>
-
-                                <div class="conteudo-noticia-single">
-                                    <h3>Natureza e Geral</h3>
-                                    <h2>Como encarar as ondas do Havaí</h2>
-                                    <p>O surf no Havaí não é para qualquer um! Dropar ondas perfeitas pode ter um preço alto 
-                                        se você não souber onde está se metendo. As ondas e a correnteza são bastante fortes, 
-                                        e o mar é cheio de pedras e corais no fundo. As chances de se machucar ou ser jogado 
-                                        para alto-mar são grandes. 
-                                        Tome cuidado e se informe ou peça dicas a outros surfistas antes de cair na água.</p>
-                                        <a href="/encarar-o-surf">Saiba Mais</a>
-                                </div>
-                            </div>
-
-                            <div class="box-ultima-single">
-                                <img src="/public/images/noticia.png"/>
-
-                                <div class="conteudo-noticia-single">
-                                    <h3>Natureza e Geral</h3>
-                                    <h2>Como encarar as ondas do Havaí</h2>
-                                    <p>O surf no Havaí não é para qualquer um! Dropar ondas perfeitas pode ter um preço alto 
-                                        se você não souber onde está se metendo. As ondas e a correnteza são bastante fortes, 
-                                        e o mar é cheio de pedras e corais no fundo. As chances de se machucar ou ser jogado 
-                                        para alto-mar são grandes. 
-                                        Tome cuidado e se informe ou peça dicas a outros surfistas antes de cair na água.</p>
-                                        <a href="/encarar-o-surf">Saiba Mais</a>
-                                </div>
-                            </div>
 
                         </div>
                         <div class="mais-lidas">
                             <h3>Mais lidas</h3>
-
                             <div class="mais-lidas-noticias">
 
-                                <div class="mais-lidas-noticias-single">
-                                    <img src="/public/images/natureza_small.png"/>
-                                    <div class="texto-mais-lido-single">
-                                        <h4>Natureza</h4>
-                                        <p>Cientistas descobrem que o Ártico abrigou uma floresta há milhões de anos. </p>
-                                        <a href="/encarar-o-surf">Saiba Mais</a>
+                                <% for(let i = 0; i < posts.length; i++) { %>
+                                    <div class="mais-lidas-noticias-single">
+                                        <img src="<%= posts[i].imagem %>"/>
+                                        <div class="texto-mais-lido-single">
+                                            <h4><%= posts[i].titulo %></h4>
+                                            <p><%- posts[i].descricaoCurta %>...  </p>
+                                            <a href="<%= posts[i].slug %>">Saiba Mais</a>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="mais-lidas-noticias-single">
-                                    <img src="/public/images/natureza_small.png"/>
-                                    <div class="texto-mais-lido-single">
-                                        <h4>Natureza</h4>
-                                        <p>Cientistas descobrem que o Ártico abrigou uma floresta há milhões de anos. </p>
-                                        <a href="/encarar-o-surf">Saiba Mais</a>
-                                    </div>
-                                </div>
-
-                                <div class="mais-lidas-noticias-single">
-                                    <img src="/public/images/natureza_small.png"/>
-                                    <div class="texto-mais-lido-single">
-                                        <h4>Natureza</h4>
-                                        <p>Cientistas descobrem que o Ártico abrigou uma floresta há milhões de anos. </p>
-                                        <a href="/encarar-o-surf">Saiba Mais</a>
-                                    </div>
-                                </div>
-
-                                <div class="mais-lidas-noticias-single">
-                                    <img src="/public/images/natureza_small.png"/>
-                                    <div class="texto-mais-lido-single">
-                                        <h4>Natureza</h4>
-                                        <p>Cientistas descobrem que o Ártico abrigou uma floresta há milhões de anos. </p>
-                                        <a href="/encarar-o-surf">Saiba Mais</a>
-                                    </div>
-                                </div>
+                                <% } %>
+                            
 
                             </div> <!-- mais-lidas-noticias -->
                         </div>  <!-- mais-lidas --> 

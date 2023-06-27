@@ -43,8 +43,19 @@ app.get('/',(req,res) => {       // PÁGINA HOME  --
     if(req.query.busca == null){   // Validação de Rotas
         
         Posts.find({}).sort({'_id': -1}).then((posts) => {
-        console.log(posts[0]);
-        res.render('home',{});
+        
+            posts = posts.map(function(val){
+                return {
+                    titulo: val.titulo,
+                    conteudo: val.conteudo,
+                    descricaoCurta: val.conteudo.substring(0,100),
+                    imagem: val.imagem,
+                    slug: val.slug,
+                    categoria: val.categoria
+                }
+            })
+        
+            res.render('home',{posts:posts});
         
         }).catch((err) => {
             alert('Deu pau');
