@@ -66,14 +66,18 @@ app.get('/',(req,res) => {       // PÁGINA HOME  --
         res.render('busca',{});
     }
      
-
 });
 
 
 app.get('/:slug',(req,res) => {   // SLUG = é o valor que está depois da barra da URL da página.
     
     //res.send(req.params.slug); 
-    res.render('single',{});
+    Posts.findOneAndUpdate({slug: req.params.slug}, {$inc : {views: 1}}, {new: true}, function(err,resposta) {
+        //console.log(resposta);
+        res.render('single',{noticia:resposta}); 
+    })
+    
+    
 
 });
 
