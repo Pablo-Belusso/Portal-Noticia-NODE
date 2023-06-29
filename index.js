@@ -78,7 +78,24 @@ app.get('/',(req,res) => {       // PÁGINA HOME  --
                 
     }else{
         
-        res.render('busca',{});
+        Posts.find({titulo: {$regex: req.query.busca,$options:"i"}},function(err,posts){
+            console.log(posts);
+
+            posts = posts.map(function(val){
+                return {
+                    titulo: val.titulo,
+                    conteudo: val.conteudo,
+                    descricaoCurta: val.conteudo.substring(0,300),
+                    imagem: val.imagem,
+                    slug: val.slug,
+                    categoria: val.categoria,
+                    views: val.views
+                }
+            }) 
+
+            res.render('busca',{posts:posts,contagem:posts.length});
+        })
+        
     }
      
 });
