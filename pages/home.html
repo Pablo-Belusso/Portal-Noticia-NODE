@@ -43,13 +43,13 @@
                             <h3>Mais lidas</h3>
                             <div class="mais-lidas-noticias">
 
-                                <% for(let i = 0; i < posts.length; i++) { %>
+                                <% for(let i = 0; i < postsTop.length; i++) { %>
                                     <div class="mais-lidas-noticias-single">
-                                        <img src="<%= posts[i].imagem %>"/>
+                                        <img src="<%= postsTop[i].imagem %>"/>
                                         <div class="texto-mais-lido-single">
-                                            <h4><%= posts[i].titulo %></h4>
-                                            <p><%- posts[i].descricaoCurta %>...  </p>
-                                            <a href="<%= posts[i].slug %>">Saiba Mais</a>
+                                            <h4><%= postsTop[i].titulo %></h4>
+                                            <p><%- postsTop[i].descricaoCurta %>... - <span style="font-size: 12px; font-weight: bold;"> (<%= postsTop[i].views %> views) </span> </p>
+                                            <a href="<%= postsTop[i].slug %>">Saiba Mais</a>
                                         </div>
                                     </div>
                                 <% } %>

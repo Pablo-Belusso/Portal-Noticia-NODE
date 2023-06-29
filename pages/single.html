@@ -24,41 +24,16 @@
 
             <div class="mais-lidas-noticias">
 
-                <div class="mais-lidas-noticias-single">
-                    <img src="/public/images/natureza_small.png"/>
-                    <div class="texto-mais-lido-single">
-                        <h4>Natureza</h4>
-                        <p>Cientistas descobrem que o Ártico abrigou uma floresta há milhões de anos. </p>
-                        <a href="/encarar-o-surf">Saiba Mais</a>
+                <% for(let i = 0; i < postsTop.length; i++) { %>
+                    <div class="mais-lidas-noticias-single">
+                        <img src="<%= postsTop[i].imagem %>"/>
+                        <div class="texto-mais-lido-single">
+                            <h4><%= postsTop[i].titulo %></h4>
+                            <p><%- postsTop[i].descricaoCurta %>... - <span style="font-size: 12px; font-weight: bold;"> (<%= postsTop[i].views %> views) </span> </p>
+                            <a href="<%= postsTop[i].slug %>">Saiba Mais</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="mais-lidas-noticias-single">
-                    <img src="/public/images/natureza_small.png"/>
-                    <div class="texto-mais-lido-single">
-                        <h4>Natureza</h4>
-                        <p>Cientistas descobrem que o Ártico abrigou uma floresta há milhões de anos. </p>
-                        <a href="/encarar-o-surf">Saiba Mais</a>
-                    </div>
-                </div>
-
-                <div class="mais-lidas-noticias-single">
-                    <img src="/public/images/natureza_small.png"/>
-                    <div class="texto-mais-lido-single">
-                        <h4>Natureza</h4>
-                        <p>Cientistas descobrem que o Ártico abrigou uma floresta há milhões de anos. </p>
-                        <a href="/encarar-o-surf">Saiba Mais</a>
-                    </div>
-                </div>
-
-                <div class="mais-lidas-noticias-single">
-                    <img src="/public/images/natureza_small.png"/>
-                    <div class="texto-mais-lido-single">
-                        <h4>Natureza</h4>
-                        <p>Cientistas descobrem que o Ártico abrigou uma floresta há milhões de anos. </p>
-                        <a href="/encarar-o-surf">Saiba Mais</a>
-                    </div>
-                </div>
+                <% } %>
 
             </div> <!-- mais-lidas-noticias -->
         </div>  <!-- mais-lidas -->
