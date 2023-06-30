@@ -6,6 +6,13 @@ const path = require('path'); // módulo nativo do NODE
 const app = express();
 const Posts = require('./Posts.js');
 
+// -----------------------------------------------------------------------------------------
+
+// SESSÃO = Serve pra dados persistentes. EX: fazer o login ficar salvo
+
+var session = require('express-session') // Chamando o EXPRESS SESSION
+
+
 // -----------   Conexão com o MONGODB usando o MONGOOSE -------------------
 
 mongoose.connect('mongodb+srv://root:12345@cluster0.9qwkssa.mongodb.net/belussonews?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true}).then(function(){
@@ -20,20 +27,28 @@ mongoose.connect('mongodb+srv://root:12345@cluster0.9qwkssa.mongodb.net/belusson
 
 
 
-// BODY-PARSER
+// --------------------- BODY-PARSER -------------------
+
 app.use( bodyParser.json() );     //suporta arquivos "json"
 app.use( bodyParser.urlencoded({    // suporta URL codificada
     extended:true
 }));
 
-// -- Para usar o arquivo HTML 
+// -------------------- SESSION (Login) ----------
+
+app.use(session({
+    secret: 'keyboard cat',
+    cookie: { maxAge: 60000 } // que a seção estará ativa durante 60 minutos
+  }))
+
+// ------  Para usar o arquivo HTML 
 app.engine('html',require('ejs').renderFile); // renderiza a engine pra html utilizando ejs
 app.set('view engine','html'); // seta a view engine para html
 app.use('/public', express.static(path.join(__dirname, 'public'))); // O diretório estático será na pasta "public"
 app.set('views', path.join(__dirname,'/pages')); // aponta para a pasta "views"
 
 
-// ROTAS  ---------------------------------------------------
+// -------  ROTAS  (Início) ---------------------------------------------------
 
 app.get('/',(req,res) => {       // PÁGINA HOME  -- 
     console.log(req.query);
@@ -132,10 +147,26 @@ app.get('/:slug',(req,res) => {   // SLUG = é o valor que está depois da barra
     
 });
 
-// ROTAS  ---------------------------------------------------
+// ----- Rota de LOGIN ------
+
+app.get('/admin/login',(req,res) => {
+
+    if (req.session.login == null){
+        req.session.login = "Pablo";
+        res.send("A seção foi criada!");
+    } else{
+        res.send(req.session.login);
+    }
+})
+
+// -------  ROTAS  (Fim) ---------------------------------------------------
 
 
-// -- SERVIDOR
+
+// ------   SERVIDOR  (Início) ------------
+
 app.listen(5000,() => {
     console.log('servidor rodando OK!');
 })
+
+// ------   SERVIDOR  (Fim) ------------
