@@ -28,6 +28,7 @@ mongoose.connect('mongodb+srv://root:12345@cluster0.9qwkssa.mongodb.net/belusson
 
 
 // --------------------- BODY-PARSER -------------------
+// Obs: Serve para poder usar o método POST
 
 app.use( bodyParser.json() );     //suporta arquivos "json"
 app.use( bodyParser.urlencoded({    // suporta URL codificada
@@ -149,13 +150,29 @@ app.get('/:slug',(req,res) => {   // SLUG = é o valor que está depois da barra
 
 // ----- Rota de LOGIN ------
 
+var usuarios = [
+    {
+        login: 'Pablo',
+        senha: '1234'
+    }
+]
+
+app.post('/admin/login', (req,res) =>{  // Verificação do Login usando o Método POST
+    
+    usuarios.map(function(val){ // Método MAP mapeia o conteúdo da Array "usuários"
+        if(val.login == req.body.login && val.senha == req.body.senha){
+            req.session.login = "Pablo";
+        }
+    })
+    res.redirect('/admin/login');
+})
+
 app.get('/admin/login',(req,res) => {
 
-    if (req.session.login == null){
-        req.session.login = "Pablo";
-        res.send("A seção foi criada!");
+    if (req.session.login == null){ // SE não estiver logado       
+        res.render('admin-login');
     } else{
-        res.send(req.session.login);
+        res.render('admin-panel');
     }
 })
 
