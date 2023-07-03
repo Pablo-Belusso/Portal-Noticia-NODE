@@ -4,8 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Admin</title>
+    
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header-painel{
+            width: 100%;
+            padding: 10px;
+            background-color: #00a1ff;
+            color: white;
+        }
+        form {
+            padding: 10px;
+            margin: 20px 0;
+        }
+        form input {
+            width: 100%;
+            height: 40px;
+            border: 1px solid #ccc;
+        }
+
+    </style>
 </head>
 <body>
-        <h1>Logado!</h1>
+        <div class="header-painel">
+            <h2>Cadastro de Notícia:</h2>
+        </div>
+        <form>
+            <input type="text" name="titulo_noticia" placeholder="Título da Notícia" />
+            <input type="text" name="url_imagem" placeholder="Link da imagem da Notícia" />
+            <textarea name="noticia" placeholder="Conteúdo da Notícia..."></textarea>
+        </form>
 </body>
 </html>
