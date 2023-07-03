@@ -170,18 +170,23 @@ app.post('/admin/login', (req,res) =>{  // Verificação do Login usando o Méto
 })
 
 
-app.post('/admin/cadastro',(req,res) => { // Cria a rota da slug pelo método POST
-    res.send("Cadastrado com Sucesso!"); // envia para o navegador
+app.post('/admin/cadastro',(req,res) => { // Cria a rota de CADASTRO
+    res.send("Cadastrado com Sucesso!"); 
+})
+
+
+app.get('/admin/deletar/10',(req,res) => { // Cria a rota de DELETAR
+    res.send("Deletando a notícia com ID: " + req.params.id); // envia para o navegador
 })
 
 
 app.get('/admin/login',(req,res) => {
 
-    //if (req.session.login == null){ // SE não estiver logado       
-    //    res.render('admin-login');
-    //} else{
+    if (req.session.login == null){ // SE não estiver logado       
+        res.render('admin-login');
+    } else{
         res.render('admin-panel');
-    //}
+    }
 })
 
 // -------  ROTAS  (Fim) ---------------------------------------------------
