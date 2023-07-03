@@ -22,9 +22,27 @@
             margin: 20px 0;
         }
         form input {
+            margin-bottom: 20px;
             width: 100%;
             height: 40px;
+            padding-left: 10px;
             border: 1px solid #ccc;
+        }
+
+        form textarea{
+            width: 100%;
+            height: 120px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        form input[type=submit]{
+            width: 100%;
+            height: 40px;
+            background-color: #00a1ff;
+            border: 0;
+            cursor: pointer;
+            color: white;
         }
 
     </style>
@@ -33,10 +51,11 @@
         <div class="header-painel">
             <h2>Cadastro de Notícia:</h2>
         </div>
-        <form>
+        <form method="post" action="/admin/cadastro"> <!-- Criar a rota -->
             <input type="text" name="titulo_noticia" placeholder="Título da Notícia" />
             <input type="text" name="url_imagem" placeholder="Link da imagem da Notícia" />
             <textarea name="noticia" placeholder="Conteúdo da Notícia..."></textarea>
+            <input type="submit" name="acao" value="Cadastrar!" />
         </form>
 </body>
 </html>

@@ -157,6 +157,8 @@ var usuarios = [
     }
 ]
 
+
+
 app.post('/admin/login', (req,res) =>{  // Verificação do Login usando o Método POST
     
     usuarios.map(function(val){ // Método MAP mapeia o conteúdo da Array "usuários"
@@ -166,6 +168,12 @@ app.post('/admin/login', (req,res) =>{  // Verificação do Login usando o Méto
     })
     res.redirect('/admin/login');
 })
+
+
+app.post('/admin/cadastro',(req,res) => { // Cria a rota da slug pelo método POST
+    res.send("Cadastrado com Sucesso!"); // envia para o navegador
+})
+
 
 app.get('/admin/login',(req,res) => {
 
