@@ -177,11 +177,11 @@ app.post('/admin/cadastro',(req,res) => { // Cria a rota da slug pelo método PO
 
 app.get('/admin/login',(req,res) => {
 
-    if (req.session.login == null){ // SE não estiver logado       
-        res.render('admin-login');
-    } else{
+    //if (req.session.login == null){ // SE não estiver logado       
+    //    res.render('admin-login');
+    //} else{
         res.render('admin-panel');
-    }
+    //}
 })
 
 // -------  ROTAS  (Fim) ---------------------------------------------------
