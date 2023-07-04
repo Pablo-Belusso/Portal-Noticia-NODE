@@ -175,6 +175,7 @@ app.post('/admin/login', (req,res) =>{  // Verificação do Login usando o Méto
 
 
 app.post('/admin/cadastro',(req,res) => { // Cria a rota de CADASTRO
+    
     console.log(req.body);
 
     // Função CREATE: vai inserir a notícia.
@@ -186,8 +187,9 @@ app.post('/admin/cadastro',(req,res) => { // Cria a rota de CADASTRO
         slug: req.body.slug,
         autor: "Admin",
         views: 0
-    })
-    res.send("Cadastro com sucesso");
+    });
+
+    res.redirect('/admin/login'); // Volta para página de Login
 })
 
 
@@ -195,7 +197,7 @@ app.get('/admin/deletar/:id',(req,res) => { // Cria a rota de DELETAR
 
     Posts.deleteOne({_id:req.params.id}).then(function(){
 
-        res.redirect('/admin/login') // envia para o navegador
+        res.redirect('/admin/login') // Volta para página de Login
 
     });
   
