@@ -28,8 +28,12 @@ mongoose.connect('mongodb+srv://root:12345@cluster0.9qwkssa.mongodb.net/belusson
 
 
 // --------------------- BODY-PARSER -------------------
-// Obs: Serve para poder usar o método POST
+/* Obs: Serve para poder usar o método POST. 
+O BODYPARSER serve para trabalhar com os dados vindo do seu cliente. 
+Quando o cliente manda dados via form payload, esse pacote ele formata e transforma os dados para o 
+formato de objeto javascript e joga tudo isso em um objeto dentro do objeto de requisição (req): req.body.
 
+*/
 app.use( bodyParser.json() );     //suporta arquivos "json"
 app.use( bodyParser.urlencoded({    // suporta URL codificada
     extended:true
@@ -171,7 +175,18 @@ app.post('/admin/login', (req,res) =>{  // Verificação do Login usando o Méto
 
 
 app.post('/admin/cadastro',(req,res) => { // Cria a rota de CADASTRO
-    res.send("Cadastrado com Sucesso!"); 
+    console.log(req.body);
+
+    Posts.insertOne({  
+        titulo: String,
+        imagem: String,
+        categoria: String,
+        conteudo: String,
+        slug: String,
+        autor: String,
+        views: Number
+    })
+    res.send("Cadastro com sucesso");
 })
 
 
