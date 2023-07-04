@@ -177,14 +177,15 @@ app.post('/admin/login', (req,res) =>{  // Verificação do Login usando o Méto
 app.post('/admin/cadastro',(req,res) => { // Cria a rota de CADASTRO
     console.log(req.body);
 
-    Posts.insertOne({  
-        titulo: String,
-        imagem: String,
-        categoria: String,
-        conteudo: String,
-        slug: String,
-        autor: String,
-        views: Number
+    // Função CREATE: vai inserir a notícia.
+    Posts.create({  
+        titulo: req.body.titulo_noticia,
+        imagem: req.body.url_imagem,
+        categoria: 'nenhuma',
+        conteudo: req.body.noticia,
+        slug: req.body.slug,
+        autor: "Admin",
+        views: 0
     })
     res.send("Cadastro com sucesso");
 })
