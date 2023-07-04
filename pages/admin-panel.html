@@ -63,9 +63,16 @@
             <h2>Listando Notícias.</h2>
         </div>
         <br>
-        <div style="margin-top: 20px; border-bottom: 2px dashed #ccc; padding: 10px; display: flex; justify-content: space-between;" class="noticia-single">
-            <p>Título da Notícia: Minha Notícia</p>
-            <a href="/admin/deletar/10">(X)</a>
-        </div>
+
+        
+        <% for(let i = 0; i < posts.length; i++) { %>
+      
+                <div style="margin-top: 20px; border-bottom: 2px dashed #ccc; padding: 10px; display: flex; justify-content: space-between;" class="noticia-single">
+                    <p>Título da Notícia:<%= posts[i].titulo %></p>
+                    <a href="/admin/deletar/<%= posts[i].id %>">(X)</a>
+                </div>
+          
+        <% } %>
+
 </body>
 </html>
