@@ -1,5 +1,8 @@
 const express = require('express'); // puxa o framework EXPRESS
 const mongoose = require('mongoose'); // biblioteca de Modelagem de Dados de Objeto
+
+const fileupload = require('express-fileupload'); // FILE-UPLOAD - Carregar arquivos
+
 var bodyParser = require('body-parser'); // dependência instalada do NODE
 
 const path = require('path'); // módulo nativo do NODE
@@ -10,7 +13,9 @@ const Posts = require('./Posts.js');
 
 // SESSÃO = Serve pra dados persistentes. EX: fazer o login ficar salvo
 
-var session = require('express-session') // Chamando o EXPRESS SESSION
+var session = require('express-session'); // Chamando o EXPRESS SESSION
+const { fileLoader } = require('ejs');
+const fileUpload = require('express-fileupload');
 
 
 // -----------   Conexão com o MONGODB usando o MONGOOSE -------------------
@@ -32,12 +37,22 @@ mongoose.connect('mongodb+srv://root:12345@cluster0.9qwkssa.mongodb.net/belusson
 O BODYPARSER serve para trabalhar com os dados vindo do seu cliente. 
 Quando o cliente manda dados via form payload, esse pacote ele formata e transforma os dados para o 
 formato de objeto javascript e joga tudo isso em um objeto dentro do objeto de requisição (req): req.body.
-
 */
+
 app.use( bodyParser.json() );     //suporta arquivos "json"
 app.use( bodyParser.urlencoded({    // suporta URL codificada
     extended:true
 }));
+
+// --------------------- FILE-UPLOAD -------------------
+// OBS: Serve para você carregar os arquivos.
+
+
+app.use( fileupload({    // 
+    useTempFiles: true,
+    tempFileDir: path.join(__dirname, 'temp')
+}));
+
 
 // -------------------- SESSION (Login) ----------
 
@@ -152,7 +167,7 @@ app.get('/:slug',(req,res) => {   // SLUG = é o valor que está depois da barra
     
 });
 
-// ----- Rota de LOGIN ------
+// ------------------------------ Rota de LOGIN ------
 
 var usuarios = [
     {
@@ -174,9 +189,12 @@ app.post('/admin/login', (req,res) =>{  // Verificação do Login usando o Méto
 })
 
 
+// ------------------------------- Rota de CADASTRO ------------------
+
+
 app.post('/admin/cadastro',(req,res) => { // Cria a rota de CADASTRO
     
-    console.log(req.body);
+    console.log(req.files);
 
     // Função CREATE: vai inserir a notícia.
     Posts.create({  
@@ -192,6 +210,8 @@ app.post('/admin/cadastro',(req,res) => { // Cria a rota de CADASTRO
     res.redirect('/admin/login'); // Volta para página de Login
 })
 
+
+// ------------------------------- Rota de DELETAR ------------------
 
 app.get('/admin/deletar/:id',(req,res) => { // Cria a rota de DELETAR
 
@@ -221,7 +241,8 @@ app.get('/admin/login',(req,res) => {
                     imagem: val.imagem,
                     slug: val.slug,
                     categoria: val.categoria,
-                    views: val.views
+                    //views: val.views
+
                 }
             })
 

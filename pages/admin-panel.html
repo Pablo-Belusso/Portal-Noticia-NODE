@@ -51,10 +51,11 @@
         <div class="header-painel">
             <h2>Cadastro de Notícia:</h2>
         </div>
-        <form method="post" action="/admin/cadastro"> <!-- Criar a rota -->
+        <form enctype="multipart/form-data" method="post" action="/admin/cadastro"> <!-- Criar a rota -->
             <input type="text" name="titulo_noticia" placeholder="Título da Notícia" />
             <input type="text" name="url_imagem" placeholder="Link da imagem da Notícia" />           
-            <input type="text" name="slug" placeholder="slug" />
+            <input type="text" name="slug" placeholder="Slug" />
+            <input type="file" name="arquivo" />
             <textarea name="noticia" placeholder="Conteúdo da Notícia..."></textarea>
             <input type="submit" name="acao" value="Cadastrar!" />
         </form>
