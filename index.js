@@ -5,6 +5,8 @@ const fileupload = require('express-fileupload'); // FILE-UPLOAD - Carregar arqu
 
 var bodyParser = require('body-parser'); // dependência instalada do NODE
 
+const fs = require('fs');
+
 const path = require('path'); // módulo nativo do NODE
 const app = express();
 const Posts = require('./Posts.js');
@@ -194,7 +196,14 @@ app.post('/admin/login', (req,res) =>{  // Verificação do Login usando o Méto
 
 app.post('/admin/cadastro',(req,res) => { // Cria a rota de CADASTRO
     
-    console.log(req.files);
+    let formato = req.files.arquivo.name.split('.');
+
+    if(formato[formato.length - 1] == "jpg") {
+        req.files.arquivo.mv(__dirname+'/public/images/'+new Date().getTime()+'.jpg');
+    
+    }else{
+        fs.unlinkSync(req.files.arquivo.tempFilePath);
+    }
 
     // Função CREATE: vai inserir a notícia.
     Posts.create({  
