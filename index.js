@@ -196,6 +196,7 @@ app.post('/admin/login', (req,res) =>{  // Verificação do Login usando o Méto
 
 app.post('/admin/cadastro',(req,res) => { // Cria a rota de CADASTRO
     
+    /*
     let formato = req.files.arquivo.name.split('.');
     var imagem = "";
     if(formato[formato.length - 1] == "jpg") {
@@ -205,11 +206,12 @@ app.post('/admin/cadastro',(req,res) => { // Cria a rota de CADASTRO
     }else{
         fs.unlinkSync(req.files.arquivo.tempFilePath); // Deleta o arquivo da memória caso escolha a imagem errada
     }
+    */
 
     // Função CREATE: vai inserir a notícia.
     Posts.create({  
         titulo: req.body.titulo_noticia,
-        imagem: 'http://localhost:5000/public/images/'+imagem,
+        imagem: req.body.url_imagem,            //'http://localhost:5000/public/images/'+imagem,
         categoria: 'nenhuma',
         conteudo: req.body.noticia,
         slug: req.body.slug,
@@ -217,7 +219,7 @@ app.post('/admin/cadastro',(req,res) => { // Cria a rota de CADASTRO
         views: 0
     });
 
-    res.redirect('/admin/login'); // Volta para página de Login
+    res.redirect('/admin/login/'); // Volta para página de Login
 })
 
 

@@ -10,10 +10,12 @@
             margin:0;
             padding: 0;
             box-sizing: border-box;
+            
         }
         .header-painel{
             width: 100%;
             padding: 10px;
+            text-align: center;
             background-color: #00a1ff;
             color: white;
         }
@@ -44,6 +46,9 @@
             cursor: pointer;
             color: white;
         }
+        .noticia-single a {
+            padding-bottom: 10px;
+        }
 
     </style>
 </head>
@@ -55,7 +60,7 @@
             <input type="text" name="titulo_noticia" placeholder="Título da Notícia" />
             <input type="text" name="url_imagem" placeholder="Link da imagem da Notícia" />           
             <input type="text" name="slug" placeholder="Slug" />
-            <input type="file" name="arquivo" />
+            <!-- <input type="file" name="arquivo" /> -->
             <textarea name="noticia" placeholder="Conteúdo da Notícia..."></textarea>
             <input type="submit" name="acao" value="Cadastrar!" />
         </form>
@@ -65,15 +70,17 @@
         </div>
         <br>
 
+        <div>
         
-        <% for(let i = 0; i < posts.length; i++) { %>
+        <%  for(let i = 0; i < posts.length; i++) { %>
       
-                <div style="height: 100%; margin-top: 20px; border-bottom: 2px dashed #ccc; padding: 10px; display: flex; justify-content: space-between;" class="noticia-single">
-                    <p>Título da Notícia:<%= posts[i].titulo %></p>
+                <div style=" margin-top: 20px; border-bottom: 2px dashed #ccc; padding: 10px; display: flex; justify-content: space-between;" class="noticia-single">
+                    <p>Título da Notícia: <%= posts[i].titulo %></p>
                     <a href="/admin/deletar/<%= posts[i].id %>">(X)</a>
                 </div>
-          
-        <% } %>
+                
+        <% }  %>
 
+        </div>
 </body>
 </html>

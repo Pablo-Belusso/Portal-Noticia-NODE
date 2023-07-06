@@ -2,6 +2,7 @@ var mongoose = require('mongoose'); // biblioteca de Modelagem de Dados de Objet
 var Schema = mongoose.Schema;
 
 var postSchema = new Schema ({
+    
     titulo: String,
     imagem: String,
     categoria: String,

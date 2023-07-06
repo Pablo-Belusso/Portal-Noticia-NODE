@@ -137,6 +137,7 @@ header {
   }
 
   section.outras-noticias{
+    height: 100%;
     background-color: #eaeaea;
     padding: 30px 20px;
     text-align: center;
@@ -148,6 +149,7 @@ header {
 
   .ultimas{
     width: 70%;
+    height: 90%;
     padding: 0 10px;
     display: flex;
     flex-wrap: wrap; /* Fala pro display Flex que quando for width: 100% é pra ele alinhar 
@@ -208,6 +210,7 @@ header {
 
 .conteudo-noticia-single{
   padding: 20px;
+  
 }
 
   .mais-lidas{
