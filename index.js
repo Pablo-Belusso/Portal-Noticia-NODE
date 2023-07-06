@@ -75,7 +75,8 @@ app.set('views', path.join(__dirname,'/pages')); // aponta para a pasta "views"
 app.get('/',(req,res) => {       // PÁGINA HOME  -- 
     console.log(req.query);
 
-    if(req.query.busca == null){   // Validação de Rotas
+
+    if(req.query.busca == null){   // Validação da Rota de BUSCA    -------------------------- 
         
         Posts.find({}).sort({'_id': -1}).then((posts) => {
         
@@ -91,7 +92,7 @@ app.get('/',(req,res) => {       // PÁGINA HOME  --
             })       
             
 
-            Posts.find({}).sort({'views': -1}).limit(3).exec(function(err,postsTop) {  // ordena por quantidade de views
+            Posts.find({}).sort({'views': -1}).limit().exec(function(err,postsTop) {  // ordena por quantidade de views
         
                 postsTop = postsTop.map(function(val){
                     return {
@@ -144,7 +145,7 @@ app.get('/:slug',(req,res) => {   // SLUG = é o valor que está depois da barra
        
         if(resposta != null) {
 
-            Posts.find({}).sort({'views': -1}).limit(3).exec(function(err,postsTop) {  // ordena por quantidade de views
+            Posts.find({}).sort({'views': -1}).limit().exec(function(err,postsTop) {  // ordena por quantidade de views
         
                 postsTop = postsTop.map(function(val){
                     return {
@@ -242,7 +243,7 @@ app.get('/admin/login',(req,res) => {
         res.render('admin-login');
     } else{
 
-        Posts.find({}).sort({'views': -1}).limit(3).exec(function(err,posts) {  // ordena por quantidade de views
+        Posts.find({}).sort({'views': -1}).limit().exec(function(err,posts) {  // ordena por quantidade de views
         
             posts = posts.map(function(val){
                 return {
